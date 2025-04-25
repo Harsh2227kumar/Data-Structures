@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 struct node {
 	int data;
 	struct node *left, *right;
@@ -46,3 +49,40 @@ void postorderInBST(BSTNODE root){
 	
 }
 
+
+// void postorderInBST(BSTNODE root) {
+    BSTNODE insertNodeInBST(BSTNODE node, int ele){
+
+        if(node == NULL){
+            printf("Successfully inserted.\n");
+            return newNodeInBST(ele);
+        }
+        if(ele<node->data)
+            node->left=insertNodeInBST(node->left,ele);
+        else if(ele>node->data)	
+            node->right=insertNodeInBST(node->right,ele);
+        else
+            return node;
+        return node;
+        
+        
+    }
+    // BSTNODE insertNodeInBST(BSTNODE node, int ele) {
+        //write your code here..
+        
+        
+    // }
+    
+    BSTNODE searchNodeInBST(BSTNODE root, int ele) {
+        //write your code here..
+        if(root==NULL || root->data==ele){
+            return root;
+        }
+        if(ele<root->data){
+            return searchNodeInBST(root->left, ele);
+        }
+        else{
+            return searchNodeInBST(root->right, ele);
+        }
+        
+    }
